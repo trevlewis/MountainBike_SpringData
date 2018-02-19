@@ -1,8 +1,8 @@
 package com.bike.mountain.model;
 
 import java.math.BigDecimal;
-import java.util.Optional;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,10 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
 @Entity
-/*
- * TODO Test and modify this query
- */
-@NamedQuery(name="Model.findAllModelsByType", query="select m from Model m where m.modeltype.name = :name") 
+@NamedQuery(name="Model.findAllModelsByType", query="select m from Model m where m.modelType.name = :name")
 public class Model {
 	
 	@Id
@@ -24,12 +21,26 @@ public class Model {
 	
 	private String name;
 	private BigDecimal price;
+	
+	@Column(name="FORK_BRAND")
 	private String forkBrand;
+	
+	@Column(name="FORK_TRAVEL")
 	private int forkTravel;
+	
+	@Column(name="HAS_REAR_SHOCK")
 	private boolean hasRearShock;
-	private Optional<String> rearShockBrand;
-	private Optional<Integer> rearShockTravel;
+	
+	@Column(name="REAR_SHOCK_BRAND")
+	private String rearShockBrand;
+	
+	@Column(name="REAR_SHOCK_TRAVEL")
+	private int rearShockTravel;
+	
+	@Column(name="TIRE_SIZE")
 	private double tireSize;
+	
+	@Column(name="FRAME_MATERIAL")
 	private String frameMaterial;
 	
 	@ManyToOne
@@ -64,11 +75,11 @@ public class Model {
 		return hasRearShock;
 	}
 
-	public Optional<String> getRearShockBrand() {
+	public String getRearShockBrand() {
 		return rearShockBrand;
 	}
 
-	public Optional<Integer> getRearShockTravel() {
+	public int getRearShockTravel() {
 		return rearShockTravel;
 	}
 
@@ -113,11 +124,11 @@ public class Model {
 		this.hasRearShock = hasRearShock;
 	}
 	
-	public void setRearShockBrand(Optional<String> rearShockBrand) {
+	public void setRearShockBrand(String rearShockBrand) {
 		this.rearShockBrand = rearShockBrand;
 	}
 
-	public void setRearShockTravel(Optional<Integer> rearShockTravel) {
+	public void setRearShockTravel(int rearShockTravel) {
 		this.rearShockTravel = rearShockTravel;
 	}
 
