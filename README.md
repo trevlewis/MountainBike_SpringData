@@ -2,7 +2,7 @@
 
 This is a demo with Spring Data JPA and Spring Data REST. 
 
-You can start exploring the api with http://localhost:8080/models, since this api is full HATEOAS you should be able to find
+You can start exploring the API with http://localhost:8080/models, since this API is full HATEOAS you should be able to find
 all the info you need. 
 
 ```JSON
