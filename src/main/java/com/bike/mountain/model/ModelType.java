@@ -11,20 +11,23 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
-@Entity(name="MODELTYPE")
-public class ModelType {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
-	
-	private String name;
-	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="MODELTYPE_ID")
-	private List<Model> models = new ArrayList<>();
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-	//GETTERS
+@Entity
+public class ModelType {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+
+	private String name;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "MODEL_TYPE_ID")
+	@JsonManagedReference("modelType")
+	private List<MountainBike> models = new ArrayList<>();
+
+	// GETTERS
 	public Long getId() {
 		return id;
 	}
@@ -33,11 +36,11 @@ public class ModelType {
 		return name;
 	}
 
-	public List<Model> getModels() {
+	public List<MountainBike> getModels() {
 		return models;
 	}
 
-	//SETTERS
+	// SETTERS
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -46,10 +49,8 @@ public class ModelType {
 		this.name = name;
 	}
 
-	public void setModels(List<Model> models) {
+	public void setModels(List<MountainBike> models) {
 		this.models = models;
 	}
-	
-	
 
 }

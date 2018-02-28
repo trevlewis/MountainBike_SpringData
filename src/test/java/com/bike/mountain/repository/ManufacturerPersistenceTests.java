@@ -16,16 +16,16 @@ import com.bike.mountain.model.Manufacturer;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 public class ManufacturerPersistenceTests {
-	
+
 	@Autowired
 	private ManufacturerRepository manufacturerRepository;
-	
+
 	@Test
 	public void testFindByFoundedDateBefore() {
 		List<Manufacturer> manufacturers = manufacturerRepository.findByFoundedDateBefore(new Date());
 		assertEquals(4, manufacturers.size());
 	}
-	
+
 	@Test
 	public void testFindAllByOrderByNameDesc() {
 		List<Manufacturer> manufacturers = manufacturerRepository.findAllByOrderByNameDesc();

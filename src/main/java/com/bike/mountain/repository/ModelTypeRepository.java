@@ -9,7 +9,7 @@ import com.bike.mountain.model.ModelType;
 
 @Repository
 public interface ModelTypeRepository extends JpaRepository<ModelType, Long> {
-	
+
 	List<ModelType> findAllByOrderByNameAsc();
 
 }

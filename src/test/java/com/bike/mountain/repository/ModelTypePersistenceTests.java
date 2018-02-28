@@ -18,11 +18,11 @@ public class ModelTypePersistenceTests {
 
 	@Autowired
 	private ModelTypeRepository modelTypeRepository;
-	
+
 	@Test
 	public void testFindAllByOrderByNameAsc() {
 		List<ModelType> types = modelTypeRepository.findAllByOrderByNameAsc();
 		assertEquals("Hard Tail", types.get(1).getName());
 	}
-	
+
 }

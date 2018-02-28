@@ -11,36 +11,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.bike.mountain.model.Model;
+import com.bike.mountain.model.MountainBike;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class ModelPersistenceTests {
-	
+public class MountainBikePersistenceTests {
+
 	@Autowired
-	private ModelRepository modelRepository;
-	
+	private MountainBikeRepository modelRepository;
+
 	@Test
 	public void testFindByPriceGreaterThanEqualAndPriceLessThanEqual() {
-		List<Model> models = modelRepository.findByPriceGreaterThanEqualAndPriceLessThanEqual(BigDecimal.valueOf(4000L), BigDecimal.valueOf(8000L));
+		List<MountainBike> models = modelRepository
+				.findByPriceGreaterThanEqualAndPriceLessThanEqual(BigDecimal.valueOf(4000L), BigDecimal.valueOf(8000L));
 		assertEquals(9, models.size());
 	}
-	
+
 	@Test
 	public void testFindAllModelsByType() {
-		List<Model> models = modelRepository.findAllModelsByType("Hard Tail");
+		List<MountainBike> models = modelRepository.findAllModelsByType("Hard Tail");
 		assertEquals(6, models.size());
 	}
-	
+
 	@Test
 	public void testFindByHasRearShockTrue() {
-		List<Model> models = modelRepository.findByHasRearShockTrue();
+		List<MountainBike> models = modelRepository.findByHasRearShockTrue();
 		assertEquals(12, models.size());
 	}
-	
+
 	@Test
 	public void testFindByHasRearShockFalse() {
-		List<Model> models = modelRepository.findByHasRearShockFalse();
+		List<MountainBike> models = modelRepository.findByHasRearShockFalse();
 		assertEquals(6, models.size());
 	}
 

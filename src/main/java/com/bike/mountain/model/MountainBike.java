@@ -11,46 +11,50 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
-@NamedQuery(name="Model.findAllModelsByType", query="select m from Model m where m.modelType.name = :name")
-public class Model {
-	
+@NamedQuery(name = "MountainBike.findAllModelsByType", query = "select mtb from MountainBike mtb where mtb.modelType.name = :name")
+public class MountainBike {
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	private String name;
 	private BigDecimal price;
-	
-	@Column(name="FORK_BRAND")
+
+	@Column(name = "FORK_BRAND")
 	private String forkBrand;
-	
-	@Column(name="FORK_TRAVEL")
+
+	@Column(name = "FORK_TRAVEL")
 	private int forkTravel;
-	
-	@Column(name="HAS_REAR_SHOCK")
+
+	@Column(name = "HAS_REAR_SHOCK")
 	private boolean hasRearShock;
-	
-	@Column(name="REAR_SHOCK_BRAND")
+
+	@Column(name = "REAR_SHOCK_BRAND")
 	private String rearShockBrand;
-	
-	@Column(name="REAR_SHOCK_TRAVEL")
+
+	@Column(name = "REAR_SHOCK_TRAVEL")
 	private int rearShockTravel;
-	
-	@Column(name="TIRE_SIZE")
+
+	@Column(name = "TIRE_SIZE")
 	private double tireSize;
-	
-	@Column(name="FRAME_MATERIAL")
+
+	@Column(name = "FRAME_MATERIAL")
 	private String frameMaterial;
-	
+
 	@ManyToOne
+	@JsonBackReference("manufacturer")
 	private Manufacturer manufacturer;
-	
+
 	@ManyToOne
-	@JoinColumn(name="MODELTYPE_ID")
+	@JoinColumn(name = "MODEL_TYPE_ID")
+	@JsonBackReference("modelType")
 	private ModelType modelType;
 
-	//GETTERS
+	// GETTERS
 	public Long getId() {
 		return id;
 	}
@@ -70,7 +74,7 @@ public class Model {
 	public int getForkTravel() {
 		return forkTravel;
 	}
-	
+
 	public boolean isHasRearShock() {
 		return hasRearShock;
 	}
@@ -99,7 +103,7 @@ public class Model {
 		return modelType;
 	}
 
-	//SETTERS
+	// SETTERS
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -123,7 +127,7 @@ public class Model {
 	public void setHasRearShock(boolean hasRearShock) {
 		this.hasRearShock = hasRearShock;
 	}
-	
+
 	public void setRearShockBrand(String rearShockBrand) {
 		this.rearShockBrand = rearShockBrand;
 	}
@@ -147,6 +151,5 @@ public class Model {
 	public void setModelType(ModelType modelType) {
 		this.modelType = modelType;
 	}
-	
-}
 
+}
