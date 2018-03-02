@@ -1,7 +1,6 @@
 # MountainBike_SpringData
 
-Note: To build this project you need to exclude the tests as of now (gradle clean build -x test). 
-	Need to work on H2 DB being created and dropped during the gradle test process. 
+Note: To build this project you need to exclude the tests (gradle clean build -x test). I did not use mocks so that I can show how to test with Sprign Boot Test.  
 	
 This is a demo with Spring Data JPA and Spring Data REST. 
 
